@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HangingArtAlley</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: #fafafa;
+            color: #333;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        #searchBar {
+            padding: 10px 16px;
+            width: 260px;
+            max-width: 55vw;
+            border-radius: 999px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        #searchBar:focus {
+            border-color: #ff7f50;
+            box-shadow: 0 0 6px rgba(255,127,80,0.4);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            padding: 14px 12px 4px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 8px 18px;
+            background: #ffffff;
+            border-radius: 999px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.25s;
+            user-select: none;
+        }
+
+        .tab:hover,
+        .tab.active {
+            background: #ff7f50;
+            color: #ffffff;
+            border-color: #ff7f50;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+            padding: 18px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+
+        .product {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 14px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            transition: 0.25s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .product img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .product h3 {
+            margin: 10px 0 4px;
+            font-size: 18px;
+        }
+
+        .product p {
+            margin: 4px 0;
+            font-size: 14px;
+        }
+
+        .product .btn {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 8px;
+            transition: 0.25s;
+        }
+
+        .wa-btn {
+            background: #25D366;
+            color: #ffffff;
+        }
+
+        .wa-btn:hover {
+            background: #1da851;
+        }
+
+        .pay-btn {
+            background: #ff7f50;
+            color: #ffffff;
+        }
+
+        .pay-btn:hover {
+            background: #e86f42;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            #searchBar {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>HangingArtAlley</h1>
+    <input type="text" id="searchBar" placeholder="Search products...">
+</header>
+
+<div class="tabs">
+    <div class="tab active" data-category="all">All</div>
+    <div class="tab" data-category="Crochet Bag">Crochet Bag</div>
+    <div class="tab" data-category="Phone Case">Phone Case</div>
+    <div class="tab" data-category="Keychain">Keychain</div>
+    <div class="tab" data-category="Paintings">Paintings</div>
+</div>
+
+<div class="products" id="productList">
+
+    <!-- SAMPLE PRODUCTS – you will edit/duplicate these -->
+
+    <div class="product" data-category="Crochet Bag">
+        <img src="crochetbag1.jpg" alt="Crochet Bag">
+        <h3>Sample Crochet Bag</h3>
+        <p><b>Price:</b> ₹000</p>
+        <p>Short description of this crochet bag.</p>
+
+        <button class="btn wa-btn" onclick="order('Sample Crochet Bag')">
+            Order on WhatsApp
+        </button>
+
+        <button class="btn pay-btn"
+                onclick="window.open('YOUR_PAYMENT_LINK_HERE', '_blank')">
+            Pay Now
+        </button>
+    </div>
+
+    <div class="product" data-category="Phone Case">
+        <img src="phonecase1.jpg" alt="Phone Case">
+        <h3>Sample Phone Case</h3>
+        <p><b>Price:</b> ₹000</p>
+        <p>Short description of this phone case.</p>
+
+        <button class="btn wa-btn" onclick="order('Sample Phone Case')">
+            Order on WhatsApp
+        </button>
+
+        <button class="btn pay-btn"
+                onclick="window.open('YOUR_PAYMENT_LINK_HERE', '_blank')">
+            Pay Now
+        </button>
+    </div>
+
+    <div class="product" data-category="Keychain">
+        <img src="keychain1.jpg" alt="Keychain">
+        <h3>Sample Keychain</h3>
+        <p><b>Price:</b> ₹000</p>
+        <p>Short description of this keychain.</p>
+
+        <button class="btn wa-btn" onclick="order('Sample Keychain')">
+            Order on WhatsApp
+        </button>
+
+        <button class="btn pay-btn"
+                onclick="window.open('YOUR_PAYMENT_LINK_HERE', '_blank')">
+            Pay Now
+        </button>
+    </div>
+
+    <div class="product" data-category="Paintings">
+        <img src="painting1.jpg" alt="Painting">
+        <h3>Sample Painting</h3>
+        <p><b>Price:</b> ₹000</p>
+        <p>Short description of this painting.</p>
+
+        <button class="btn wa-btn" onclick="order('Sample Painting')">
+            Order on WhatsApp
+        </button>
+
+        <button class="btn pay-btn"
+                onclick="window.open('YOUR_PAYMENT_LINK_HERE', '_blank')">
+            Pay Now
+        </button>
+    </div>
+
+</div>
+
+<script>
+    function order(productName) {
+        const url = "https://wa.me/918700347726?text=" +
+            encodeURIComponent("I want to order: " + productName);
+        window.open(url, "_blank");
+    }
+
+    const tabs = document.querySelectorAll(".tab");
+    const products = document.querySelectorAll(".product");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            const category = tab.getAttribute("data-category");
+
+            products.forEach(product => {
+                const prodCat = product.getAttribute("data-category");
+                if (category === "all" || prodCat === category) {
+                    product.style.display = "flex";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        });
+    });
+
+    document.getElementById("searchBar").addEventListener("input", function () {
+        const value = this.value.toLowerCase();
+        products.forEach(product => {
+            const text = product.innerText.toLowerCase();
+            product.style.display = text.includes(value) ? "flex" : "none";
+        });
+    });
+</script>
+
+</body>
+</html>
